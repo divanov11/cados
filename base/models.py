@@ -53,10 +53,11 @@ class Post(models.Model):
     def __str__(self):
         return self.body[0:50]
 
-
-# class Like(models.Model):
-#     owner = models.ForeignKey(User, models.CASCADE, blank=True, null=True)
-
-
 class Comment(models.Model):
-    pass 
+    owner = models.ForeignKey(User, models.CASCADE, blank=True, null=True)
+    post = models.ForeignKey(Post, models.CASCADE, blank=True, null=True)
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.body[0:50]
